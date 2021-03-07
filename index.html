@@ -6,33 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Math Game</title>
     <link rel="stylesheet" type=text/css href="math.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   </head>
 <body>
     
-  <h1>Math Game</h1>
-  <div id="mainBox">
-      <div id="scoreBox">
-        Your Score : <span id="scorevalue"></span>
-      </div>
-    
-    <div id="correctBox">Correct</div>
-    <div id="wrongBox">Try again</div>
-    <div id="questionBox"> </div>
-    <div id="instructionBox">Click on the correct answer</div>
-    <div id="choiceBox">
-        <div id="box1" class="box"></div>
-        <div id="box2" class="box"></div>
-        <div id="box3" class="box"></div>
-        <div id="box4" class="box"></div>
-    </div>
-    <div id="startresetBox">Start Game</div>
-    <div id="timeremainingBox">Time remaining: <span id="timeremainingvalue"></span>Sec
-    </div>
-    <div id="gameOverBox">
-    </div>
-    </div>
+<h2>Minecraft Math Challange</h2>
 
-    <script src="src/scripts/main.js"></script>
+<div id="mathChallang">
+
+  
+  <div class="stopWatch">
+  <div id="displayTime">00:00:00</div>
+  </div>
+
+  <button id="startTime">Start</button>
+  <button id="startOver">Reset</button>
+
+  
+  
+  
+  <p id="someMath"></p> 
+
+
+<form action="text" id="formMath">
+  <input type="text" id="someAnswer" autocomplete="off"/>
+  <button id ="submitAnswer">Submit</button>
+</form>
+
+
+<div class="container">
+<div class ="boxes">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="break">break</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div class="break">break</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+</div>
+
+<div id ="innerImage"></div>
+</div>
+
+<p>You need <span id="pointsNeeded">9</span> correct answers to finish game!</p>
+
+<p>Your time:</p>
+</div>
+
+
+
+
+
 </body>
+<script src="math.js"></script>
 </html>
 
