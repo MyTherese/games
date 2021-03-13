@@ -13,30 +13,34 @@
     
 <h2>Minecraft Math Challange</h2>
 
-<div id="mathChallang">
 
-  
+<div id="mathChallang">
   <div class="stopWatch">
   <div id="displayTime">00:00:00</div>
-  </div>
+</div>
 
-  <button id="startTime">Start</button>
-  <button id="startOver">Reset</button>
+  <button style="display:block" id ="startTime" onclick ="gameOn()">Start</button>
 
-  
-  
-  
   <p id="someMath"></p> 
+
+  <p>Your time:<span id="stopTime"></span></p>
+
 
 
 <form action="text" id="formMath">
   <input type="text" id="someAnswer" autocomplete="off"/>
-  <button id ="submitAnswer">Submit</button>
+  
+  <button id ="
+  ">Submit</button>
 </form>
+
+
+<button style="display:none" id="tryAgain" onclick="newGame()">Try again?</button>
 
 
 <div class="container">
 <div class ="boxes">
+
     <div class="box">1</div>
     <div class="box">2</div>
     <div class="box">3</div>
@@ -53,9 +57,8 @@
 <div id ="innerImage"></div>
 </div>
 
-<p>You need <span id="pointsNeeded">9</span> correct answers to finish game!</p>
+<p>You need <span id="minPoints">9</span> correct answers to finish game!</p>
 
-<p>Your time:</p>
 </div>
 
 

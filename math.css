@@ -1,6 +1,7 @@
 * {
     font-family: 'VT323', monospace;
     text-align: center;
+    
 }
 
 body {
@@ -15,17 +16,15 @@ h2 {
 }
 
 
-#stopWatch {
+.stopWatch {
     font-size: 60px;
     text-align: center;
     margin-top: 10px;
-    
-    :not(:last-child):after {
-        content: ':';
-    }
-
 }
-
+#startTime {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #someMath{
     font-size: 60px;
@@ -35,6 +34,11 @@ h2 {
 input{
 width: 100px;
 height: 50px;
+}
+
+#tryAgain{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 button{
@@ -50,7 +54,6 @@ button{
 .boxes {
     display: flex;
     flex-wrap: wrap;
-    /* width: 100%; */
     height:100%;
     background: url("minecraft.jpg") no-repeat ;
     opacity: 0.2;
@@ -58,7 +61,6 @@ button{
 }
 
 .box {
-    /* margin: 30px; */
     height: 80px;
     width: 80px;
     flex-direction: row; 

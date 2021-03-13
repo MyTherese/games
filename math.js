@@ -1,59 +1,72 @@
-// var digitalTimer = document.getElementsByTagName("h1")[0];
-var timerButton = document.getElementById("timerStart");
-var startOverButton = document.getElementById("startOver")
-var stopButton = document.getElementById("stop")
-var dispalyMath = document.getElementById('someMath');
+
+var time = document.getElementById("displayTime");
+var gameStart = document.getElementById("startTime");
+var buttonSubmit = document.getElementById("submitAnswer");
+var finishdTime = document.getElementById("stopTime");
+var reloadGame = document.getElementById("tryAgain");
+var dispalyMath = document.getElementById("someMath");
 var formMath = document.getElementById("formMath");
 var fieldMath = document.getElementById("someAnswer");
 var innerBox = document.getElementById("innerImage");
-var pointsNeeded = document.getElementById("pointsNeeded");
-console.log(pointsNeeded);
+var pointsNeeded = document.getElementById("minPoints");
 
 
+
+var interval = undefined;
+// chenge this 
 var state = {
-    score:0,
-    wrongAnswers:0,
-    seconds:0,
-    minutes:0,
-    hours:0
+    score:0
 }
- 
-
-// var seconds = 0, minutes = 0, hours = 0, t;
-
-// function add() {
-//     seconds++;
-//     if (seconds >= 60) {
-//         seconds = 0;
-//         minutes++;
-//         if (minutes >= 60) {
-//             minutes = 0;
-//             hours++;
-//         }
-//     }
-    
-// digitalTimer.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
-//     timer();
-// }
-// function timer() {
-//     t = setTimeout(add, 1000);
-// }
-
-// timerButton.onclick = timer;
-
-// this should happen when finshed game
-// stopButton.onclick = function() {
-//     clearTimeout(t);
-// }
-
-// startOverButton.onclick = function() {
-//     digitalTimer.textContent = "00:00:00";
-//     seconds = 0; minutes = 0; hours = 0;
-// }
 
 
+var stateTime = {
+    miliseconds: 0,
+    seconds: 0,
+    minutes: 0
+}
 
+    mili = stateTime.miliseconds = 0;
+    secon = stateTime.seconds = 0;
+    minu = stateTime.minutes = 0;
+
+function stopWatch(){
+    mili++;
+    if(mili >= 60) {
+        mili = 0;
+        secon++;
+
+    if(secon >= 60) {
+        secon = 0;
+        minu++;
+    }
+    }
+    // om miliseonds siffra är en siffra alltså mindre än 10 
+    counterGame =  (minu ? (minu > 9 ? minu : "0" + minu) : "00") + ":" + (secon ? (secon > 9 ? secon : "0" + secon) : "00") + ":" + (mili > 9 ? mili : "0" + mili);
+    time.textContent = counterGame;
+
+}
+
+
+function gameOn(){
+
+
+interval = setInterval(stopWatch, 15);
+   if(gameStart.style.display === "block"){
+    gameStart.style.display = "none";
+   }else{
+    gameStart.style.display ="block";
+   }
+    // startTime.innerHTML 
+    // console.log(interval);
+
+    // var some = clearInterval(interval);
+    // console.log(some);
+    // time.style.color = "blue";
+
+}
+
+
+// math calculation
 function displayProblem() {
     state.currentProblem = setMathProblem()
     dispalyMath.innerHTML = `${state.currentProblem.numberOne} ${state.currentProblem.operator} ${state.currentProblem.numberTwo}`
@@ -72,7 +85,12 @@ function setMathProblem() {
         operator: ['+', '-', 'x'][setNumber(2)]
     }
 }
+function newGame(){
+    location.reload();
+    }
 
+
+// when submitted 
 formMath.addEventListener("submit", handleSubmit);
 function handleSubmit(e){
     e.preventDefault()
@@ -82,40 +100,44 @@ function handleSubmit(e){
     if(p.operator == "-") correctAnswer = p.numberOne - p.numberTwo
     if(p.operator == "x") correctAnswer = p.numberOne * p.numberTwo
 
-    console.log(correctAnswer);
-    
     if (parseInt(fieldMath.value, 10) === correctAnswer) {
         state.score++
-        pointsNeeded.textContent = 9 - state.score
-        innerBox.style.transform = `scaleX(${state.score / 9})`
-        displayProblem()
-     
-        // timerButton.onclick = timer;
-        
+        pointsNeeded.textContent = 9 - state.score;
+        innerBox.style.transform = `scaleX(${state.score / 9})`;
+        displayProblem();
     }else{
-        alert ("försök igjen..");
-        // style displayproblem red when wrong 
+        alert ("försök igjen...");
+        location.reload();
     }
-
     checkLogic()
 }
 
+
+
 function checkLogic(){
     if(state.score === 9){
-        alert ("display time!!");
-        resestGame()
-        // your time 
-    }
+        clearInterval(interval);
+        finishdTime.innerHTML= counterGame;
+        alert (counterGame);
+        resestGame();
+        reloadGame.style.display = "block";
+    }  
 }
 
 function resestGame(){
     displayProblem()
     state.score = 0
     pointsNeeded.textContent = 9
-   
+
 }
 
 displayProblem()
+
+
+
+
+
+
 
 
 
